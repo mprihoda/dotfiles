@@ -1,0 +1,107 @@
+Host galt
+  Hostname galt.prihoda.net
+
+Host tsa1
+  Hostname 10.129.129.2
+
+Host testpmw
+  Hostname testpmw.maternacz.com
+  User mprihoda
+
+Host efakt
+  Hostname efakt.e-bs.cz
+
+Host xlsconv
+  User xlsconv
+
+Host tconv
+  User xlsconv
+
+Host dconv
+  User xlsconv
+
+Host vconv
+  User xlsconv
+
+Host sop
+  Hostname sop.cmi.cz
+  Port 1122
+
+Host oracle
+  LocalForward 1521 localhost:1521
+  Hostname 192.168.56.101
+
+Host labserver.browsersoft.com
+#  IdentityFile ~/.ssh/id_rsa_jindra
+  User  michal
+
+Host vsd.spinet.cz
+        Protocol 1
+        StrictHostKeyChecking no
+
+Host ipaq
+    ForwardAgent no
+    ForwardX11   no
+    Compression  no
+    StrictHostKeyChecking no
+
+Host devel
+    Hostname devel.eidentity.cz
+    ForwardAgent yes
+    ForwardX11 no
+    Compression yes
+
+Host kenny
+    HostName kenny.e-bs.cz
+    ForwardAgent yes
+    ForwardX11	 no
+    Compression	 no
+
+Host eric
+    HostName eric.e-bs.cz
+    ForwardAgent yes
+    ForwardX11	 no
+    Compression	 no
+
+Host prihoda.net
+    User admin
+    ForwardAgent yes
+    ForwardX11   no
+    Compression  yes
+
+Host *.e-bs.cz
+    ForwardAgent yes
+    ForwardX11	 no
+    Compression	 no
+
+Host *.spinet.cz
+    ForwardAgent yes
+    ForwardX11	 no
+    Compression	 yes
+
+Host e-mail.cz
+    ForwardAgent yes
+    ForwardX11   no
+    Compression  yes
+
+Host login.cz
+    ForwardAgent yes
+    ForwardX11	 no
+    Compression  yes
+
+Host *
+  ForwardAgent yes
+  ForwardX11 no
+  RhostsAuthentication no
+  RhostsRSAAuthentication no
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  FallBackToRsh no
+  UseRsh no
+  BatchMode no
+  CheckHostIP yes
+  StrictHostKeyChecking ask
+  IdentityFile ~/.ssh/id_dsa
+  Port 22
+  Protocol 2
+  EscapeChar ~
