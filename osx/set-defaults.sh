@@ -39,3 +39,12 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+
+if ! $(defaults read com.apple.Terminal "Window Settings" | grep -q Solarized)
+then 
+	open `dirname $0`/*.terminal
+fi
+
+defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark xterm-256color"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark xterm-256color"
