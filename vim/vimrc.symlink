@@ -31,3 +31,75 @@ filetype plugin indent on     " required
 
 syntax on
 set background=dark
+
+"============================================================================
+" Make :help appear in a full-screen tab, instead of a window
+"============================================================================
+
+    "Only apply to .txt files...
+    augroup HelpInTabs
+        autocmd!
+        autocmd BufEnter  *.txt   call HelpInNewTab()
+    augroup END
+
+    "Only apply to help files...
+    function! HelpInNewTab ()
+        if &buftype == 'help'
+            "Convert the help window to a tab...
+            execute "normal \<C-W>T"
+        endif
+    endfunction
+
+"============================================================================
+" Allow deletes in Insert mode to keep deleting past the insertion point
+"============================================================================
+
+    set backspace=indent,eol,start
+
+"============================================================================
+" Turn on case-insensitive matches (but only when pattern is all-lowercase)
+"============================================================================
+
+    set ignorecase smartcase
+
+
+"============================================================================
+" Make searches look-ahead as you type
+"============================================================================
+
+    set incsearch
+
+
+"============================================================================
+" Make successful searches highlight all possible matches
+"============================================================================
+
+    set hlsearch
+
+"============================================================================
+" Make delete key in Normal mode remove the persistently highlighted matches
+"============================================================================
+
+    nmap <silent>  <BS>  :nohlsearch<CR>
+
+"============================================================================
+" When completing, show all options, insert common prefix, then iterate
+"============================================================================
+
+    set wildmode=list:longest,full
+
+"============================================================================
+" Make shift operations in Visual mode stay in Visual mode afterwards
+"============================================================================
+
+    vmap <expr> > ShiftAndKeepVisualSelection(">")
+    vmap <expr> < ShiftAndKeepVisualSelection("<")
+
+    function! ShiftAndKeepVisualSelection(cmd, mode)
+        set nosmartindent
+        if mode() =~ '[Vv]'
+            return a:cmd . ":set smartindent\<CR>gv"
+        else
+            return a:cmd . ":set smartindent\<CR>"
+        endif
+    endfunction
