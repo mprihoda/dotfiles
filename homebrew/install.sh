@@ -13,6 +13,6 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark macvim ctags
+brew install grc coreutils spark macvim ctags vim
 
 exit 0
