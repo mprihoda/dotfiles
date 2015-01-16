@@ -14,3 +14,5 @@ do
 		cp ssh/$i ~/.ssh/$i
 	fi
 done
+
+ln -sf ~/.dotfiles/ssh/rc ~/.ssh/rc
