@@ -9,5 +9,5 @@ fi
 
 if [ ! -e "$HOME/bin/scalas" ]
 then
-    $HOME/bin/cs sbt/sbt --branch 0.13
+    $HOME/bin/cs sbt/sbt --branch 0.13.7
 fi
