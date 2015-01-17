@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Install scala
+
+if [ ! -e /usr/local/bin/scala ]
+then
+    brew install scala
+fi
+
 # Install conscript
 
 if [ ! -e "$HOME/bin/cs" ]
