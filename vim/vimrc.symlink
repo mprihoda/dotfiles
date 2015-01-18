@@ -25,7 +25,7 @@ Plugin 'bling/vim-airline'
 " Dash support
 Plugin 'rizzatti/dash.vim'
 
-Plugin 'freitass/todo.txt-vim'
+Plugin 'davidoc/taskpaper.vim'
 
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
