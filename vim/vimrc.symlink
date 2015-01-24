@@ -31,6 +31,27 @@ Plugin 'davidoc/taskpaper.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
 
+" Language-specific
+" Javascript
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+
+" Indentation help
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" Bracket and other delimiters automatic closing
+Plugin 'Raimondi/delimitMate'
+
+" Syntax checker
+Plugin 'scrooloose/syntastic'
+
+" Completion
+Plugin 'Valloric/YouCompleteMe'
+
+" Search
+Plugin 'mileszs/ack.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on     " required
@@ -106,17 +127,17 @@ filetype plugin indent on     " required
 " Make shift operations in Visual mode stay in Visual mode afterwards
 "============================================================================
 
-    vmap <expr> > ShiftAndKeepVisualSelection(">")
-    vmap <expr> < ShiftAndKeepVisualSelection("<")
-
-    function! ShiftAndKeepVisualSelection(cmd, mode)
-        set nosmartindent
-        if mode() =~ '[Vv]'
-            return a:cmd . ":set smartindent\<CR>gv"
-        else
-            return a:cmd . ":set smartindent\<CR>"
-        endif
-    endfunction
+"    vmap <expr> > ShiftAndKeepVisualSelection(">")
+"    vmap <expr> < ShiftAndKeepVisualSelection("<")
+"
+"    function! ShiftAndKeepVisualSelection(cmd, mode)
+"        set nosmartindent
+"        if mode() =~ '[Vv]'
+"            return a:cmd . ":set smartindent\<CR>gv"
+"        else
+"            return a:cmd . ":set smartindent\<CR>"
+"        endif
+"    endfunction
 
 " keep always a few lines above/below cursor to see some context
 set scrolloff=7
@@ -195,25 +216,6 @@ endtry
 " Always show the status line
 set laststatus=2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-inoremap $t <><esc>i
-
 " NERDTree
 noremap <silent> <D-1> :NERDTreeToggle<CR>
 noremap <silent> <Leader>1 :NERDTreeToggle<CR>
@@ -223,3 +225,30 @@ noremap <silent> <D-7> :TagbarToggle<CR>
 noremap <silent> <Leader>7 :TagbarToggle<CR>
 
 colorscheme solarized
+
+" Syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+" Do not limit ctrlp max files
+let g:ctrlp_max_files=0
+
+" Taskpaper settings
+function! s:taskpaper_setup()
+" Your settings
+nnoremap <buffer> <silent> <Leader>tn
+\    :<C-u>call taskpaper#toggle_tag('next', '')<CR>
+endfunction
+
+augroup vimrc-taskpaper
+autocmd!
+autocmd FileType taskpaper call s:taskpaper_setup()
+augroup END
+
+
