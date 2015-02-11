@@ -1,0 +1,9 @@
+vup () {
+    local vpn=$1
+    osascript -e "tell application \"Viscosity\" to connect \"$vpn\""
+}
+
+vdown () {
+    local vpn=$1
+    osascript -e "tell application \"Viscosity\" to disconnect \"$vpn\""
+}

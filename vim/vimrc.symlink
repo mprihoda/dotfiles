@@ -25,17 +25,14 @@ Plugin 'bling/vim-airline'
 " Dash support
 Plugin 'rizzatti/dash.vim'
 
+" Search about everything
+Plugin 'Shougo/unite.vim'
+
 Plugin 'davidoc/taskpaper.vim'
 
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
-
-" Language-specific
-" Javascript
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'marijnh/tern_for_vim'
 
 " Indentation help
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -51,6 +48,27 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Search
 Plugin 'mileszs/ack.vim'
+
+"Distraction-free editation
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
+Plugin 'aklt/plantuml-syntax'
+
+" Language-specific
+" Javascript
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+
+" PHP
+Plugin 'vim-php/tagbar-phpctags.vim'
+
+" Objective-C
+Plugin 'b4winckler/vim-objc'
+
+" Mustache
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,7 +180,7 @@ set mat=2
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+set background=light
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -237,7 +255,12 @@ colorscheme solarized
     let g:syntastic_check_on_wq = 0
 
 " Do not limit ctrlp max files
-let g:ctrlp_max_files=0
+let g:ctrlp_max_files=40000
+
+" Map ctrlp for file, buffer and mru search
+map <silent> <Leader>t <C-p>
+map <silent> <Leader>y :CtrlPBuffer<CR>
+map <silent> <Leader>e :CtrlPMRU<CR>
 
 " Taskpaper settings
 function! s:taskpaper_setup()
@@ -251,4 +274,27 @@ autocmd!
 autocmd FileType taskpaper call s:taskpaper_setup()
 augroup END
 
+" Eclim settings
+let g:EclimCompletionMethod = 'omnifunc'
 
+set exrc
+set secure
+
+" Dash settings
+
+nmap <silent> <Leader>d <Plug>DashSearch
+
+" Set czech utf-8 keymap
+set keymap=czech_utf-8
+" Set the iminsert back to 0 after setting the keymap, so that US keyboard is default
+" Can be switched with C-^
+set iminsert=0
+" Use the same flag for search pattern keymap as for insert mode, otherwise they would be separate
+set imsearch=-1
+
+" Use markdown format for plain text files
+augroup markdown
+    autocmd!
+    autocmd BufEnter,BufRead *.txt,*.md,*.text,*.markdown set filetype=markdown
+    autocmd FileType markdown nmap <buffer> <Leader>p :!open -a Marked\ 2 "%"<CR>
+augroup END
