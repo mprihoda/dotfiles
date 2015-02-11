@@ -46,6 +46,13 @@ need_push () {
   fi
 }
 
+java_version() {
+  if (( $+commands[jenv] ))
+  then
+    echo "$(jenv version | awk '{print $1}')"
+  fi
+}
+
 ruby_version() {
   if (( $+commands[rbenv] ))
   then
@@ -57,6 +64,16 @@ ruby_version() {
     echo "$(rvm-prompt | awk '{print $1}')"
   fi
 }
+
+java_prompt() {
+  if ! [[ -z "$(java_version)" ]]
+  then
+    echo "%{$fg_bold[yellow]%}$(java_version)%{$reset_color%} "
+  else
+    echo ""
+  fi
+}
+
 
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
@@ -71,7 +88,7 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
