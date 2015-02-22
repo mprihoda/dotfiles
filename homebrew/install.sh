@@ -13,6 +13,10 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark macvim ctags vim
+brew install grc coreutils spark ctags
+# I used to install macvim, but since it is impossible to use vim server from command line with macvim
+# a change has been necessary.
+brew install cask
+brew install vim --with-client-server
 
 exit 0
