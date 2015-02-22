@@ -18,6 +18,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 " Git support
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
 " Surround with / select between plugin
 Plugin 'tpope/vim-surround'
 " Status bar plugin
@@ -55,10 +57,23 @@ Plugin 'junegunn/limelight.vim'
 
 Plugin 'aklt/plantuml-syntax'
 
-" Language-specific
+Plugin 'SirVer/ultisnips'
+
+" HTML
+Plugin 'othree/html5.vim'
+Plugin 'mattn/emmet-vim'
+
+" Scala
+Plugin 'derekwyatt/vim-scala'
+Plugin 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
+
+" Play
+Plugin 'gre/play2vim'
+
 " Javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'marijnh/tern_for_vim'
 
 " PHP
@@ -180,7 +195,7 @@ set mat=2
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -237,6 +252,7 @@ set laststatus=2
 " NERDTree
 noremap <silent> <D-1> :NERDTreeToggle<CR>
 noremap <silent> <Leader>1 :NERDTreeToggle<CR>
+noremap <silent> <Leader>ff :NERDTreeFind<CR>
 
 " Tagbar
 noremap <silent> <D-7> :TagbarToggle<CR>
@@ -245,14 +261,14 @@ noremap <silent> <Leader>7 :TagbarToggle<CR>
 colorscheme solarized
 
 " Syntastic
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Do not limit ctrlp max files
 let g:ctrlp_max_files=40000
@@ -298,3 +314,29 @@ augroup markdown
     autocmd BufEnter,BufRead *.txt,*.md,*.text,*.markdown set filetype=markdown
     autocmd FileType markdown nmap <buffer> <Leader>p :!open -a Marked\ 2 "%"<CR>
 augroup END
+
+" Remap ultisnips
+let g:UltiSnipsExpandTrigger="<C-Tab>"
+let g:UltiSnipsListSnippets="<C-S-Tab>"
+
+" Auto save when moving to another buffer, calling make etc.
+set autowrite
+
+" Set silent make on F5
+nnoremap <F5> :silent make<CR>
+inoremap <F5> <Esc>:silent make<CR>
+vnoremap <F5> :<C-U>:silent make<CR>
+
+" Allow line numbers
+set number
+
+" Enable jsx checking using jsxhint
+" Use 'npm install -g jsxhint' to install
+let g:syntastic_javascript_checkers = ['jsxhint']
+
+" SBT quickfix
+let g:quickfix_load_mapping="<Leader>0"
+let g:quickfix_next_mapping=""
+
+" Copy to clipboard also (unnamed would work for macvim, unnamedplus works with X-11 vim on MacOS)
+set clipboard^=unnamedplus
