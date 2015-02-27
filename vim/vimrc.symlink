@@ -63,6 +63,9 @@ Plugin 'SirVer/ultisnips'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 
+"CSS
+Plugin 'groenewege/vim-less'
+
 " Scala
 Plugin 'derekwyatt/vim-scala'
 Plugin 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
@@ -316,8 +319,9 @@ augroup markdown
 augroup END
 
 " Remap ultisnips
-let g:UltiSnipsExpandTrigger="<C-Tab>"
-let g:UltiSnipsListSnippets="<C-S-Tab>"
+let g:UltiSnipsExpandTrigger="<c-y>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>""
 
 " Auto save when moving to another buffer, calling make etc.
 set autowrite
