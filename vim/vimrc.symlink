@@ -42,6 +42,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Bracket and other delimiters automatic closing
 Plugin 'Raimondi/delimitMate'
 
+" Debugger
+Plugin 'joonty/vdebug'
+
 " Syntax checker
 Plugin 'scrooloose/syntastic'
 
@@ -108,18 +111,18 @@ filetype plugin indent on     " required
 "============================================================================
 
     "Only apply to .txt files...
-    augroup HelpInTabs
-        autocmd!
-        autocmd BufEnter  *.txt   call HelpInNewTab()
-    augroup END
-
-    "Only apply to help files...
-    function! HelpInNewTab ()
-        if &buftype == 'help'
-            "Convert the help window to a tab...
-            execute "normal \<C-W>T"
-        endif
-    endfunction
+"    augroup HelpInTabs
+"        autocmd!
+"        autocmd BufEnter  *.txt   call HelpInNewTab()
+"    augroup END
+"
+"    "Only apply to help files...
+"    function! HelpInNewTab ()
+"        if &buftype == 'help'
+"            "Convert the help window to a tab...
+"            execute "normal \<C-W>T"
+"        endif
+"    endfunction
 
 "============================================================================
 " Allow deletes in Insert mode to keep deleting past the insertion point
@@ -270,7 +273,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " Do not limit ctrlp max files
