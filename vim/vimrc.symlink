@@ -330,9 +330,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>""
 set autowrite
 
 " Set silent make on F5
-nnoremap <F5> :silent make<CR>
-inoremap <F5> <Esc>:silent make<CR>
-vnoremap <F5> :<C-U>:silent make<CR>
+nnoremap <Leader>m :silent make<CR>
+inoremap <Leader>m <Esc>:silent make<CR>
+vnoremap <Leader>m :<C-U>:silent make<CR>
 
 " Allow line numbers
 set number
