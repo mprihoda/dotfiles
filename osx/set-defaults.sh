@@ -9,6 +9,7 @@
 
 # Disable press-and-hold for keys in favor of key repeat.
 defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+defaults write com.jetbrains.intellij-EAP ApplePressAndHoldEnabled -bool false
 defaults write com.jetbrains.AppCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.Terminal ApplePressAndHoldEnabled -bool false
 defaults write org.vim.MacVim ApplePressAndHoldEnabled -bool false
