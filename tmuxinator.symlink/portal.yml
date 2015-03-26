@@ -1,0 +1,41 @@
+# ~/.tmuxinator/portal.yml
+
+name: portal
+root: ~/Devel/commercial/e-bs/cmi-web
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+pre: boot2docker up
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+windows:
+  - editor: vim
+  - git:
+  - local:
+        layout: even-vertical
+        panes:
+            - mgmt:
+                - bdi
+                - alias drush='docker-compose run --rm web drush'
+            - docker:
+                - bdi
+                - docker-compose up
+  - server:
+        layout: main-vertical
+        panes:
+            - portal: ssh root@cmi-portal
+            - test: ssh root@cmi-portal-test
