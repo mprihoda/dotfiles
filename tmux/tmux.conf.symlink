@@ -7,6 +7,9 @@ unbind-key C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+# Disable aggresive resize
+# set-window-option -g aggressive-resize on
+
 # Escape time
 set-option -s escape-time 1
 
@@ -20,8 +23,6 @@ bind-key r source-file ~/.tmux.conf \; display "Reloaded!"
 # Spliting panes
 bind-key | split-window -h
 bind-key - split-window -v
-
-setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
 
 # Move between panes
 bind-key h select-pane -L
