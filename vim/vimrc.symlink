@@ -11,6 +11,9 @@ Plugin 'gmarik/Vundle.vim'
 " dockerfile syntax highlighting
 Plugin 'honza/dockerfile.vim'
 
+" Gettext translation files
+Plugin 'po.vim'
+
 Plugin 'majutsushi/tagbar'
 " File tree
 Plugin 'scrooloose/nerdtree'
