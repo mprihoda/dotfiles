@@ -10,7 +10,6 @@ root: ~/Devel/commercial/ententee/hie-engine
 # pre: sudo /etc/rc.d/mysqld start
 pre: 
  - vagrant up
- - boot2docker up
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -27,13 +26,11 @@ pre:
 windows:
   - editor:
     - vim
-    - ':tabe ~/Dropbox/Tasks/projects/hie-engine.taskpaper'
   - git: 
   - node:
       layout: even-horizontal
       panes:
         - 
         - node:
-            - bdi
             - cd release_node
             - docker-compose up

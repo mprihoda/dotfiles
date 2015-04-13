@@ -7,6 +7,9 @@ unbind-key C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+# Copy buffer to clipboard
+bind-key C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+
 # Disable aggresive resize
 # set-window-option -g aggressive-resize on
 
