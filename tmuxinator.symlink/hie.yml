@@ -9,7 +9,7 @@ root: ~/Devel/commercial/ententee/hie-engine
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
 pre: 
- - vagrant up
+ - VAGRANT_CWD=~/Devel/commercial/ententee/coreos-vagrant vagrant up
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -33,4 +33,5 @@ windows:
         - 
         - node:
             - cd release_node
+            - export DOCKER_HOST=tcp://localhost:2375
             - docker-compose up
