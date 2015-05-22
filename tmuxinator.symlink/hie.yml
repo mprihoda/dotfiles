@@ -34,4 +34,5 @@ windows:
         - node:
             - cd release_node
             - export DOCKER_HOST=tcp://localhost:2375
+            - docker start oracle-xe
             - docker-compose up
