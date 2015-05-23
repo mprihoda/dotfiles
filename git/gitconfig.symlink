@@ -36,10 +36,10 @@
         # Setting to git 2.0 default to surpress warning message
         default = simple
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/local/bin/diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /usr/local/bin/diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 [merge]
 	conflictstyle = diff3
