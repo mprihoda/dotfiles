@@ -97,6 +97,9 @@ Plugin 'mustache/vim-mustache-handlebars'
 " Evernote plugin
 Plugin 'neilagabriel/vim-geeknote'
 
+" Cucumber tests
+Plugin 'tpope/vim-cucumber'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on     " required

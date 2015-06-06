@@ -51,5 +51,5 @@ then
 	open `dirname $0`/*.terminal
 fi
 
-defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark xterm-256color"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark xterm-256color"
+defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark"
