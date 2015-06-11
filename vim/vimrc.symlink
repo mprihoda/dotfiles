@@ -75,6 +75,7 @@ Plugin 'groenewege/vim-less'
 " Scala
 Plugin 'derekwyatt/vim-scala'
 Plugin 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
+Plugin 'GEverding/vim-hocon'
 
 " Play
 Plugin 'gre/play2vim'
@@ -285,6 +286,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_scala_checkers = ['fsc']
+let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+
 " Do not limit ctrlp max files
 let g:ctrlp_max_files=40000
 
@@ -338,7 +342,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>""
 " Auto save when moving to another buffer, calling make etc.
 set autowrite
 
-" Set silent make on F5
+" Set silent make on <leader>m
 nnoremap <Leader>m :silent make<CR>
 inoremap <Leader>m <Esc>:silent make<CR>
 vnoremap <Leader>m :<C-U>:silent make<CR>
