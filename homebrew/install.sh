@@ -17,6 +17,6 @@ brew install grc coreutils spark ctags reattach-to-user-namespace
 # I used to install macvim, but since it is impossible to use vim server from command line with macvim
 # a change has been necessary.
 brew install cask
-brew install vim --with-client-server
+brew install macvim --overwrite-system-vim
 
 exit 0
