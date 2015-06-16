@@ -359,4 +359,4 @@ let g:quickfix_load_mapping="<Leader>0"
 let g:quickfix_next_mapping=""
 
 " Copy to clipboard also (unnamed would work for macvim, unnamedplus works with X-11 vim on MacOS)
-set clipboard^=unnamedplus
+" set clipboard^=unnamedplus
