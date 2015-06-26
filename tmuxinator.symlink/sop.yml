@@ -1,15 +1,13 @@
-# ~/.tmuxinator/hie.yml
+# ~/.tmuxinator/sop.yml
 
-name: hie
-root: ~/Devel/commercial/ententee/hie-engine
+name: sop
+root: ~/Devel/commercial/e-bs/cmi
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
-pre: 
- - docker-machine start devel
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -24,15 +22,5 @@ pre:
 # startup_window: logs
 
 windows:
-  - editor:
-    - vim
-  - git: 
-  - node:
-      layout: even-horizontal
-      panes:
-        - 
-        - node:
-            - cd release_node
-            - eval "$(docker-machine env devel)"
-            - docker start oracle-xe
-            - docker-compose up
+  - editor: vim
+  - ssh:
