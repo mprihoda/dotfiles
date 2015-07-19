@@ -2,7 +2,8 @@ set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.nvim/bundle/Vundle.vim
+call vundle#rc("~/.nvim/bundle")
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -363,6 +364,3 @@ let g:quickfix_next_mapping=""
 
 " Copy to clipboard also (unnamed works for macvim, unnamedplus works with X-11 vim on MacOS)
 set clipboard^=unnamed
-
-" Enable powerline symbols
-let g:airline_powerline_fonts=1
