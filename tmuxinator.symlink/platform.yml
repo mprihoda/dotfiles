@@ -8,6 +8,7 @@ root: ~/Devel/commercial/fiftyforms/platform
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
+pre: docker-machine start devel
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -25,6 +26,18 @@ windows:
   - editor:
       layout: 0706,364x78,0,0[364x61,0,0,0,364x16,0,62,2]
       panes:
-        - vim
-        - sbt
+        - vim:
+            - vim
+        - sbt:
+            - sbt -Dmongodb.primary="localhost:27017"
+            - project crmPlay
+            - run
   - git:
+  - docker:
+      layout: even-horizontal
+      panes:
+        - mongodb:
+            - eval "$(docker-machine env devel)"
+            - docker-compose -f crm/play/docker-compose.yml up
+        - ssh:
+            - ssh -L 27017:localhost:27017 -i ~/.docker/machine/machines/devel/id_rsa docker@`docker-machine ip devel`
