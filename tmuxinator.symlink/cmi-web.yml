@@ -1,13 +1,14 @@
-# ~/.tmuxinator/sop.yml
+# ~/.tmuxinator/portal.yml
 
-name: sop
-root: ~/Devel/commercial/e-bs/cmi
+name: cmi-web
+root: ~/Devel/commercial/e-bs/cmi-web
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
+pre: boot2docker up
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -23,4 +24,22 @@ root: ~/Devel/commercial/e-bs/cmi
 
 windows:
   - editor: vim
-  - ssh:
+  - git:
+  - local:
+        layout: even-horizontal
+        panes:
+            - mgmt:
+                - bdi
+                - alias drush='docker-compose run --rm web drush'
+            - docker:
+                - bdi
+                - docker-compose up
+  - server:
+        layout: even-horizontal
+        panes:
+            - portal: 
+                - ssh root@cmi-portal
+                - cd /var/www/html
+            - test: 
+                - ssh root@cmi-portal-test
+                - cd /var/www/html
