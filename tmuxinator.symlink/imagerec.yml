@@ -1,7 +1,7 @@
-# ~/.tmuxinator/portal.yml
+# ~/.tmuxinator/imagerec.yml
 
-name: cmi-web
-root: ~/Devel/commercial/e-bs/cmi-web
+name: imagerec
+root: ~/Devel/commercial/e-bs/cmi-image-recognition
 
 # Optional tmux socket
 # socket_name: foo
@@ -23,23 +23,20 @@ pre: docker-machine start devel
 # startup_window: logs
 
 windows:
-  - editor: vim
+  - editor:
+      layout: 0706,364x78,0,0[364x61,0,0,0,364x16,0,62,2]
+      panes:
+        - vim:
+            - vim
+        - sbt:
+            - sbt -Dmongodb.primary="localhost:27017"
+            - run
   - git:
-  - local:
-        layout: even-horizontal
-        panes:
-            - mgmt:
-                - eval "$(docker-machine env devel)"
-                - alias drush='docker-compose run --rm web drush'
-            - docker:
-                - eval "$(docker-machine env devel)"
-                - docker-compose up
-  - server:
-        layout: even-horizontal
-        panes:
-            - portal: 
-                - ssh root@cmi-portal
-                - cd /var/www/html
-            - test: 
-                - ssh root@cmi-portal-test
-                - cd /var/www/html
+  - docker:
+      layout: even-horizontal
+      panes:
+        - mongodb:
+            - eval "$(docker-machine env devel)"
+            - docker-compose up
+        - ssh:
+            - ssh -L 27017:localhost:27017 -i ~/.docker/machine/machines/devel/id_rsa docker@`docker-machine ip devel`
