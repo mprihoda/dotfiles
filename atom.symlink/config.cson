@@ -1,35 +1,35 @@
-'*':
-  'editor':
-    'fontFamily': 'Menlo'
-    'fontSize': 13
-    'showIndentGuide': true
-    'invisibles': {}
-  'core':
-    'ignoredNames': [
-      '.bundle'
-      '.git'
-      'log'
-      'repositories'
-      'tmp'
-      'vendor'
+"*":
+  editor:
+    fontFamily: "Menlo"
+    fontSize: 13
+    showIndentGuide: true
+    invisibles: {}
+  core:
+    ignoredNames: [
+      ".bundle"
+      ".git"
+      "log"
+      "repositories"
+      "tmp"
+      "vendor"
     ]
-    'disabledPackages': [
-      'background-tips'
-      'exception-reporting'
-      'metrics'
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
     ]
-    'themes': [
-      'unity-ui'
-      'glacier-syntax'
+    themes: [
+      "unity-ui"
+      "glacier-syntax"
     ]
-  'spell-check':
-    'grammars': [
-      'text.plain'
-      'source.gfm'
-      'text.git-commit'
+  "spell-check":
+    grammars: [
+      "text.plain"
+      "source.gfm"
+      "text.git-commit"
     ]
-  'welcome':
-    'showOnStartup': false
-  'release-notes':
-    'viewedVersion': '0.89.0'
-  'go-plus': {}
+  welcome:
+    showOnStartup: false
+  "release-notes":
+    viewedVersion: "0.89.0"
+  "go-plus": {}
