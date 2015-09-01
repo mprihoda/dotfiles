@@ -29,7 +29,7 @@ windows:
         - vim:
             - vim
         - sbt:
-            - sbt -Djava.library.path=/usr/local/opt/opencv/share/OpenCV/java -Dmongdb.uri=mongodb://localhost:27017/imagerec
+            - sbt -Djava.library.path=/usr/local/opt/opencv/share/OpenCV/java/:/usr/local/opt/opencv/lib -Dmongdb.uri=mongodb://localhost:27017/imagerec
             - run
   - git:
   - docker:
