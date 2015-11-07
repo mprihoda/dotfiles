@@ -36,4 +36,4 @@ windows:
             - docker start oracle-xe
             - docker-compose up
         - docker_ssh:
-            - ssh -i ~/.docker/machine/machines/devel/id_rsa -L 1521:localhost:1521 -L 8999:localhost:8999 docker@`docker-machine ip devel`
+            - ssh -i ~/.docker/machine/machines/devel/id_rsa -L 1521:localhost:1521 -L 8999:localhost:8999 -L 2221:localhost:2221 docker@`docker-machine ip devel`
