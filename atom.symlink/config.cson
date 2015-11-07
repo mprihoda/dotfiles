@@ -1,7 +1,7 @@
 "*":
   editor:
-    fontFamily: "Menlo"
-    fontSize: 13
+    fontFamily: "Input Mono"
+    fontSize: 11
     showIndentGuide: true
     invisibles: {}
   core:
@@ -19,8 +19,8 @@
       "metrics"
     ]
     themes: [
-      "unity-ui"
-      "glacier-syntax"
+      "atom-light-ui"
+      "solarized-light-syntax"
     ]
   "spell-check":
     grammars: [
