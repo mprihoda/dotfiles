@@ -66,7 +66,6 @@
 #       will be updated with the contents of your LCONFL file edits.
 #
 # NOTE: Use :cq to abort the merge and exit Vim with an error code.
-set -x
 
 if [[ -z $@ || $# != "5" ]] ; then
     echo -e "Usage: $0 \$EDITOR \$BASE \$LOCAL \$REMOTE \$MERGED"
@@ -92,7 +91,7 @@ trap 'rm -f "'"${LCONFL}"'" "'"${RCONFL}"'"' SIGINT SIGTERM EXIT
 
 # Remove the conflict markers for each 'side' and put each into a temp file
 sed -e '/^<<<<<<< /,/^=======$/d' -e '/^>>>>>>> /d' "${MERGED}" > "${LCONFL}"
-sed -e '/^=======$/,/^>>>>>>> /d' -e '/^<<<<<<< /d' "${MERGED}" > "${RCONFL}"
+sed -e '/^||||||| /,/^>>>>>>> /d' -e '/^=======$/,/^>>>>>>> /d' -e '/^<<<<<<< /d' "${MERGED}" > "${RCONFL}"
 
 # Fire up vimdiff
 $cmd -f -R -d "${LCONFL}" "${RCONFL}" \

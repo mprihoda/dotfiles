@@ -42,9 +42,13 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [merge]
-	conflictstyle = diff3
-	tool = diffconflicts
+#	conflictstyle = merge
+#	tool = fugitive
+    conflictstyle = diff3
+    tool = diffconflicts
 [mergetool "diffconflicts"]
 	trustExitCode = true
 	keepBackup = false
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+[mergetool "fugitive"]
+      cmd = vim "+Gdiff" $MERGED

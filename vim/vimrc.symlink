@@ -337,6 +337,12 @@ augroup markdown
     autocmd FileType markdown nmap <buffer> <Leader>p :!open -a Marked\ 2 "%"<CR>
 augroup END
 
+" Settings for YML
+augroup yml
+    autocmd!
+    autocmd BufEnter,BufRead *.yml set sts=2 sw=2 et
+augroup END
+
 " Remap ultisnips
 let g:UltiSnipsExpandTrigger="<c-y>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
