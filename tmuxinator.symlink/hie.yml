@@ -33,7 +33,7 @@ windows:
         - node:
             - cd release_node
             - eval "$(docker-machine env devel)"
-            - docker start oracle-xe
+            - docker start hie-db
             - docker-compose up
         - docker_ssh:
             - ssh -i ~/.docker/machine/machines/devel/id_rsa -L 1521:localhost:1521 -L 8999:localhost:8999 -L 2221:localhost:2221 docker@`docker-machine ip devel`
