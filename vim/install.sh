@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ ! -e ~/.vim ]
+then
+    mkdir ~/.vim
+    ln -s ~/.vimrc ~/.vim/init.vim
+fi
+
 if [ ! -e ~/.vim/bundle ]
 then
 	mkdir -p ~/.vim/bundle
