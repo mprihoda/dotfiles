@@ -1,6 +1,6 @@
 # ~/.tmuxinator/portal.yml
 
-name: cmi-web
+name: portal
 root: ~/Devel/commercial/e-bs/cmi-web
 
 # Optional tmux socket
