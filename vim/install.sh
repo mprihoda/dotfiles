@@ -17,7 +17,7 @@ fi
 
 if [ ! -e ~/.config/nvim/init.vim ]
 then
-    ln -s vim/init.vim ~/.config/nvim
+    ln -s $(pwd)/vim/init.vim ~/.config/nvim
 fi
 
 if [ ! -e ~/.vim/bundle ]
