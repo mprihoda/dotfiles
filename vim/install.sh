@@ -3,7 +3,21 @@
 if [ ! -e ~/.vim ]
 then
     mkdir ~/.vim
-    ln -s ~/.vimrc ~/.vim/init.vim
+fi
+
+if [ ! -e ~/.config ]
+then
+    mkdir ~/.config
+fi
+
+if [ ! -e ~/.config/nvim ]
+then
+    mkdir ~/.config/nvim
+fi
+
+if [ ! -e ~/.config/nvim/init.vim ]
+then
+    ln -s vim/init.vim ~/.config/nvim
 fi
 
 if [ ! -e ~/.vim/bundle ]
