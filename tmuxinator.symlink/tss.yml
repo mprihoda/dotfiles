@@ -1,0 +1,49 @@
+# ~/.tmuxinator/platform.yml
+
+name: tss
+root: ~/Devel/commercial/eidentity/tss
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+pre: docker-machine start devel
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+windows:
+  - editor:
+      layout: 0706,364x78,0,0[364x61,0,0,0,364x16,0,62,2]
+      panes:
+        - vim:
+            - vim
+        - sbt:
+            - sbt 
+  - local:
+      layout: even-horizontal
+      panes:
+        - git:
+          -
+        - docker:
+          - eval $(docker-machine env devel)
+  - remote:
+      layout: 99af,364x78,0,0{181x78,0,0,18,182x78,182,0[182x39,182,0,21,182x38,182,40,22]} 
+      panes:
+        - docker: 
+          - export DOCKER_HOST=tcp://localhost:2377
+        - tsa2:
+          - ssh -L 2377:localhost:2375 tsa2
+        - signer:
+          - ssh tsa2
+          - ssh signer
