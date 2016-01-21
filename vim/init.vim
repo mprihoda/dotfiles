@@ -1,112 +1,116 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
+
+Plug 'MarcWeber/vim-addon-local-vimrc'
 
 " dockerfile syntax highlighting
-Plugin 'honza/dockerfile.vim'
+Plug 'honza/dockerfile.vim'
 
 " Gettext translation files
-Plugin 'po.vim'
+Plug 'po.vim'
 
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " File tree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Fuzzy file/mru/buffer search
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Git support
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Surround with / select between plugin
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Status bar plugin
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 " Dash support
-Plugin 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 
 " Search about everything
-Plugin 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim'
 
-Plugin 'davidoc/taskpaper.vim'
+Plug 'davidoc/taskpaper.vim'
 
 " Color schemes
-Plugin 'flazz/vim-colorschemes'
-Plugin 'chriskempson/base16-vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
 " Indentation help
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Bracket and other delimiters automatic closing
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Debugger
-Plugin 'joonty/vdebug'
+Plug 'joonty/vdebug'
 
 " Syntax checker
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " Completion
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
 
 " Search
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 "Distraction-free editation
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
-Plugin 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'
 
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " HTML
-Plugin 'othree/html5.vim'
-Plugin 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
 
 "CSS
-Plugin 'groenewege/vim-less'
+Plug 'groenewege/vim-less'
 
 " Scala
-Plugin 'derekwyatt/vim-scala'
-" Plugin 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
-Plugin 'GEverding/vim-hocon'
-Plugin 'ensime/ensime-vim'
+Plug 'derekwyatt/vim-scala'
+" Plug 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
+Plug 'GEverding/vim-hocon'
+Plug 'ensime/ensime-vim'
 
 " Play
-Plugin 'gre/play2vim'
+Plug 'gre/play2vim'
 
 " Javascript
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'marijnh/tern_for_vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'marijnh/tern_for_vim'
 
 " PHP
-Plugin 'vim-php/tagbar-phpctags.vim'
+Plug 'vim-php/tagbar-phpctags.vim'
 
 " Objective-C
-Plugin 'b4winckler/vim-objc'
+Plug 'b4winckler/vim-objc'
 
 " Mustache
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 
 " Evernote plugin
-Plugin 'neilagabriel/vim-geeknote'
+Plug 'neilagabriel/vim-geeknote'
 
 " Cucumber tests
-Plugin 'tpope/vim-cucumber'
+Plug 'tpope/vim-cucumber'
 
 " Tables
-Plugin 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
