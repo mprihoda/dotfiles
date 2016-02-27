@@ -29,7 +29,8 @@ Plug 'airblade/vim-gitgutter'
 " Surround with / select between plugin
 Plug 'tpope/vim-surround'
 " Status bar plugin
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Dash support
 Plug 'rizzatti/dash.vim'
 
@@ -53,6 +54,7 @@ Plug 'joonty/vdebug'
 
 " Syntax checker
 Plug 'scrooloose/syntastic'
+Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 " Completion
 Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
@@ -88,7 +90,7 @@ Plug 'gre/play2vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 
 " PHP
 Plug 'vim-php/tagbar-phpctags.vim'
@@ -245,8 +247,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -282,7 +284,7 @@ noremap <silent> <Leader>ff :NERDTreeFind<CR>
 noremap <silent> <D-7> :TagbarToggle<CR>
 noremap <silent> <Leader>7 :TagbarToggle<CR>
 
-colorscheme solarized
+colorscheme base16-default
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -366,7 +368,7 @@ set number
 
 " Enable jsx checking using jsxhint
 " Use 'npm install -g jsxhint' to install
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " SBT quickfix
 let g:quickfix_load_mapping="<Leader>0"
@@ -377,3 +379,4 @@ set clipboard^=unnamed
 
 " Enable powerline symbols
 let g:airline_powerline_fonts=1
+let g:airline_theme="base16_default"

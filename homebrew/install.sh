@@ -18,5 +18,8 @@ brew install grc coreutils spark ctags reattach-to-user-namespace
 # a change has been necessary.
 brew install cask
 brew install macvim --override-system-vim
+brew install neovim/neovim/neovim
+brew install powerline
+brew cask install iterm2-beta
 
 exit 0

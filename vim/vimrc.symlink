@@ -26,7 +26,8 @@ Plugin 'airblade/vim-gitgutter'
 " Surround with / select between plugin
 Plugin 'tpope/vim-surround'
 " Status bar plugin
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Dash support
 Plugin 'rizzatti/dash.vim'
 
@@ -278,7 +279,7 @@ noremap <silent> <Leader>ff :NERDTreeFind<CR>
 noremap <silent> <D-7> :TagbarToggle<CR>
 noremap <silent> <Leader>7 :TagbarToggle<CR>
 
-colorscheme solarized
+colorscheme base16-default
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -362,7 +363,7 @@ set number
 
 " Enable jsx checking using jsxhint
 " Use 'npm install -g jsxhint' to install
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " SBT quickfix
 let g:quickfix_load_mapping="<Leader>0"
@@ -373,3 +374,4 @@ set clipboard^=unnamed
 
 " Enable powerline symbols
 let g:airline_powerline_fonts=1
+let g:airline_theme="base16_default"
