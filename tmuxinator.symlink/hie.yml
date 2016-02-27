@@ -25,7 +25,7 @@ pre:
 
 windows:
   - editor:
-    - vim
+    - vi
   - git: 
   - node:
       layout: even-horizontal
