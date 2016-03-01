@@ -57,7 +57,8 @@ Plug 'scrooloose/syntastic'
 Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 " Completion
-Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
+" Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
+Plug 'Shougo/deoplete.nvim'
 
 " Search
 Plug 'mileszs/ack.vim'
