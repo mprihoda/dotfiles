@@ -24,20 +24,26 @@ pre: docker-machine start devel
 
 windows:
   - editor:
-      layout: 0706,364x78,0,0[364x61,0,0,0,364x16,0,62,2]
-      panes:
-        - vi:
-            - vi
-        - sbt:
-            - sbt -Dmongodb.primary="localhost:27017"
-            - project crmPlay
-            - run
+    - vi
   - git:
+  - build:
+      layout: ef39,181x55,0,0{90x55,0,0,3,90x55,91,0[90x27,91,0,9,90x27,91,28,30]}
+      panes:
+        - sbt:
+          - sbt -Dmongodb.primary="localhost:27017"
+          - project crmPlay
+          - run
+        - webpack:
+          - cd crm/play
+          - npm run build-dev:watch -- -d
+        - mocha:
+          - cd crm/play
+          - npm run test:watch
   - docker:
       layout: even-horizontal
       panes:
         - mongodb:
-            - eval "$(docker-machine env devel)"
-            - docker-compose -f crm/play/docker-compose.yml up
+          - eval "$(docker-machine env devel)"
+          - docker-compose -f crm/play/docker-compose.yml up
         - ssh:
-            - ssh -L 27017:localhost:27017 -i ~/.docker/machine/machines/devel/id_rsa docker@`docker-machine ip devel`
+          - ssh -L 27017:localhost:27017 -i ~/.docker/machine/machines/devel/id_rsa docker@`docker-machine ip devel`
