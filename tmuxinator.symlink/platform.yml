@@ -35,7 +35,7 @@ windows:
           - run
         - webpack:
           - cd crm/play
-          - npm run build-dev:watch -- -d
+          - npm run build:watch -- -d
         - mocha:
           - cd crm/play
           - npm run test:watch
