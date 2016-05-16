@@ -31,6 +31,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " Dash support
 Plugin 'rizzatti/dash.vim'
 
+" CSV Support
+Plugin 'chrisbra/csv.vim'
+
 " Search about everything
 Plugin 'Shougo/unite.vim'
 

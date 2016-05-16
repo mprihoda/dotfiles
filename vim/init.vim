@@ -11,6 +11,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'MarcWeber/vim-addon-local-vimrc'
 
+" CSV
+Plug 'chrisbra/csv.vim'
+
 " dockerfile syntax highlighting
 Plug 'honza/dockerfile.vim'
 
@@ -381,3 +384,6 @@ set clipboard^=unnamed
 " Enable powerline symbols
 let g:airline_powerline_fonts=1
 let g:airline_theme="base16_default"
+
+" Enable deoplete
+let g:deoplete#enable_at_start=1

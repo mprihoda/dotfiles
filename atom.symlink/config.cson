@@ -1,10 +1,10 @@
 "*":
-  editor:
-    fontFamily: "Input Mono"
-    fontSize: 11
-    showIndentGuide: true
-    invisibles: {}
   core:
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+    ]
     ignoredNames: [
       ".bundle"
       ".git"
@@ -13,23 +13,24 @@
       "tmp"
       "vendor"
     ]
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
     themes: [
       "atom-light-ui"
       "solarized-light-syntax"
     ]
+  editor:
+    fontFamily: "Input Mono"
+    fontSize: 11
+    invisibles: {}
+    showIndentGuide: true
+  "go-plus": {}
+  "release-notes":
+    viewedVersion: "0.89.0"
   "spell-check":
     grammars: [
       "text.plain"
       "source.gfm"
       "text.git-commit"
     ]
+  "vim-mode": {}
   welcome:
     showOnStartup: false
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "go-plus": {}
