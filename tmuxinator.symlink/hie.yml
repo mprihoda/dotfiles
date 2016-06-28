@@ -8,8 +8,8 @@ root: ~/Devel/commercial/ententee/hie-engine
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
-pre: 
- - docker-machine start devel
+#pre: 
+# - docker-machine start devel
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -28,10 +28,4 @@ windows:
     - vi
   - git: 
   - node:
-      layout: even-horizontal
-      panes:
-        - node:
-            - eval "$(docker-machine env devel)"
-            - docker-compose up
-        - docker_ssh:
-            - ssh -i ~/.docker/machine/machines/devel/id_rsa -L 1521:localhost:1521 -L 8999:localhost:8999 -L 2221:localhost:2221 docker@`docker-machine ip devel`
+    - docker-compose up
