@@ -1,7 +1,7 @@
 # ~/.tmuxinator/gfr.yml
 
-name: gfr
-root: ~/Devel/commercial/eidentity/gfr
+name: gfr-web
+root: ~/Devel/commercial/eidentity/gfr/ca/web
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,3 +31,8 @@ windows:
   - editor:
     - vi
   - git:
+  - node:
+      layout: even-horizontal
+      panes:
+        - npm run start
+        - npm run test:watch
