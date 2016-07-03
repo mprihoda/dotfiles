@@ -308,7 +308,7 @@ let g:ctrlp_max_files=40000
 
 " Map ctrlp for file, buffer and mru search
 map <silent> <Leader>t <C-p>
-map <silent> <Leader>0 :CtrlP .<CR>
+map <silent> <Leader>o :CtrlP .<CR>
 map <silent> <Leader>y :CtrlPBuffer<CR>
 map <silent> <Leader>e :CtrlPMRU<CR>
 
