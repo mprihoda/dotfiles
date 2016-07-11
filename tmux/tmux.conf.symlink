@@ -51,6 +51,8 @@ set-window -g visual-activity on
 run-shell "powerline-daemon -q"
 source "/usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf"
 
+source ~/.tmux.local.conf
+
 #### COLOUR (Solarized light)
 
 # default statusbar colors
