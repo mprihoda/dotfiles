@@ -61,7 +61,10 @@ Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 " Completion
 " Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
-Plug 'Shougo/deoplete.nvim'
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " Search
 Plug 'mileszs/ack.vim'
@@ -94,7 +97,7 @@ Plug 'gre/play2vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 
 " PHP
 Plug 'vim-php/tagbar-phpctags.vim'
@@ -113,6 +116,9 @@ Plug 'tpope/vim-cucumber'
 
 " Tables
 Plug 'dhruvasagar/vim-table-mode'
+
+" Rust
+Plug 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -288,7 +294,7 @@ noremap <silent> <Leader>ff :NERDTreeFind<CR>
 noremap <silent> <D-7> :TagbarToggle<CR>
 noremap <silent> <Leader>7 :TagbarToggle<CR>
 
-colorscheme base16-default
+colorscheme solarized
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -384,7 +390,30 @@ set clipboard^=unnamed
 
 " Enable powerline symbols
 let g:airline_powerline_fonts=1
-let g:airline_theme="base16_default"
+let g:airline_theme="solarized"
 
-" Enable deoplete
-let g:deoplete#enable_at_start=1
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#mappings#close_popup() . "\<CR>"
+endfunction
+
+" automatically strip trailing spaces
+augroup tspaces
+  autocmd!
+  autocmd FileType xml,c,cpp,java,scala,php,javascript autocmd BufWritePre <buffer> %s/\s\+$//e
+augroup END
+
+try
+  source ~/.config/nvim/init.local.vim
+catch
+endtry
