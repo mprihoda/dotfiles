@@ -306,7 +306,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_scala_checkers = ['fsc']
+let g:syntastic_scala_checkers = ['ensime']
 let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
 
 " Do not limit ctrlp max files
@@ -396,6 +396,10 @@ let g:airline_theme="solarized"
 let g:deoplete#enable_at_startup = 1
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources={}
+let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.scala = '[^. *\t]\.\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
@@ -412,6 +416,15 @@ augroup tspaces
   autocmd!
   autocmd FileType xml,c,cpp,java,scala,php,javascript autocmd BufWritePre <buffer> %s/\s\+$//e
 augroup END
+
+" ensime mappings
+augroup ensime
+  autocmd!
+  autocmd FileType scala nnoremap <localleader>df :EnDeclaration<CR>
+  autocmd FileType scala nnoremap <localleader>db :EnDocBrowse<CR>
+  autocmd BufWritePost *.scala :EnTypeCheck<CR>
+  nnoremap <localleader>c :EnTypeCheck<CR>
+augroup end
 
 try
   source ~/.config/nvim/init.local.vim
