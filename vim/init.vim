@@ -39,6 +39,7 @@ Plug 'rizzatti/dash.vim'
 
 " Search about everything
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 Plug 'davidoc/taskpaper.vim'
 
@@ -98,6 +99,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'carlitux/deoplete-ternjs'
 
 " PHP
 Plug 'vim-php/tagbar-phpctags.vim'
