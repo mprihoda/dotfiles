@@ -1,14 +1,13 @@
-# ~/.tmuxinator/platform.yml
+# ~/.tmuxinator/gfr.yml
 
-name: platform
-root: ~/Devel/commercial/fiftyforms/platform
+name: gfr-front
+root: ~/Devel/commercial/eidentity/gfr/ca/frontend
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
-# pre: docker-machine start devel
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -22,22 +21,16 @@ root: ~/Devel/commercial/fiftyforms/platform
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: logs
 
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t gfr
+
 windows:
   - editor:
-    - vi
-  - git:
-  - build:
-      layout: ef39,181x55,0,0{90x55,0,0,3,90x55,91,0[90x27,91,0,9,90x27,91,28,30]}
+      layout: main-vertical
       panes:
-        - sbt:
-          - sbt -Dmongodb.primary="localhost:27017"
-          - project crmPlay
-          - run
-        - webpack:
-          - cd crm/play
-          - npm run build-dev:watch
-        - mocha:
-          - cd crm/play
-          - npm run test:watch
-  - docker:
-      - docker-compose -f crm/play/docker-compose.yml up
+        - vi
+        - sbt
+  - git:
