@@ -35,7 +35,9 @@ windows:
       layout: even-horizontal
       panes:
         - sbt:
-          - sbt 'project frontend' '~reStart'
+          - sbt
+          - project frontend
+          - ~reStart
         - node:
           - cd web
           - npm run start
