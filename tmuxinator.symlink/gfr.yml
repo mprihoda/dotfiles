@@ -28,8 +28,7 @@ root: ~/Devel/commercial/eidentity/gfr/ca
 # post: tmux -CC attach -t gfr
 
 windows:
-  - editor:
-    - vi
+  - editor: vi
   - git:
   - build:
       layout: even-horizontal
@@ -41,3 +40,4 @@ windows:
         - node:
           - cd web
           - npm run start
+  - run: docker-compose up mongo
