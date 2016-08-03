@@ -31,7 +31,7 @@ windows:
   - editor: vi
   - git:
   - build:
-      layout: even-horizontal
+      layout: tiled
       panes:
         - sbt:
           - sbt
@@ -40,4 +40,7 @@ windows:
         - node:
           - cd web
           - npm run start
+        - node_tests:
+          - cd web
+          - npm run test:watch
   - run: docker-compose up mongo
