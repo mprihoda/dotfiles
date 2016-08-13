@@ -422,10 +422,13 @@ augroup END
 " ensime mappings
 augroup ensime
   autocmd!
+  autocmd FileType scala nnoremap <localleader>i :EnSuggestImport<CR>
+  autocmd FileType scala nnoremap <localleader>c :EnTypeCheck<CR>
+  autocmd FileType scala nnoremap <localleader>dt :EnType<CR>
+  autocmd FileType scala nnoremap <localleader>di :EnInspectType<CR>
   autocmd FileType scala nnoremap <localleader>df :EnDeclaration<CR>
   autocmd FileType scala nnoremap <localleader>db :EnDocBrowse<CR>
-  autocmd BufWritePost *.scala :EnTypeCheck<CR>
-  nnoremap <localleader>c :EnTypeCheck<CR>
+  autocmd BufWritePost *.scala :silent EnTypeCheck<CR>
 augroup end
 
 try
