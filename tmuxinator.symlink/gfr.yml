@@ -33,14 +33,29 @@ windows:
   - build:
       layout: tiled
       panes:
-        - sbt:
-          - sbt
+        - sbt_run:
+          - docker-compose up -d
+          - docker attach ca_web_1
           - project frontend
           - ~reStart
-        - node:
+        - sbt_tests:
+          - sbt
+          - ~test
+        - node_run:
           - cd web
           - npm run start
         - node_tests:
           - cd web
           - npm run test:watch
-  - run: docker-compose up mongo
+  - deploy:
+      layout: even-horizontal
+      panes:
+        - ci:
+          - eval $(docker-machine env betaeid)
+          - cd deployments/ci
+          - docker-compose ps
+        - test:
+          - eval $(docker-machine env eid-coreos2)
+          - cd deployments/test
+          - docker-compose ps
+
