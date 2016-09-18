@@ -122,6 +122,9 @@ Plug 'dhruvasagar/vim-table-mode'
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" Pug
+Plug 'digitaltoad/vim-pug'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
