@@ -21,5 +21,6 @@ brew install macvim --override-system-vim
 brew install neovim/neovim/neovim
 brew install powerline
 brew cask install iterm2-beta
+brew install python3
 
 exit 0
