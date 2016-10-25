@@ -1,9 +1,12 @@
 "*":
+  autosave:
+    enabled: true
   core:
     disabledPackages: [
       "background-tips"
       "exception-reporting"
       "metrics"
+      "tabs"
     ]
     ignoredNames: [
       ".bundle"
@@ -18,11 +21,13 @@
       "solarized-light-syntax"
     ]
   editor:
-    fontFamily: "Input Mono"
+    fontFamily: "Hasklig"
     fontSize: 11
     invisibles: {}
     showIndentGuide: true
   "go-plus": {}
+  "platformio-ide-terminal":
+    core: {}
   "release-notes":
     viewedVersion: "0.89.0"
   "spell-check":
@@ -31,6 +36,7 @@
       "source.gfm"
       "text.git-commit"
     ]
+  "tree-view": {}
   "vim-mode": {}
   welcome:
     showOnStartup: false

@@ -1,1 +1,13 @@
-{}
+[
+  {
+    title: "ČMI interfaces"
+    group: "e-bs"
+    paths: [
+      "/Users/mph/Devel/commercial/e-bs/cmi"
+    ]
+    icon: "icon-chevron-right"
+    settings: {}
+    devMode: false
+    template: null
+  }
+]
