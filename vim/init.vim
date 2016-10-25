@@ -125,6 +125,9 @@ Plug 'rust-lang/rust.vim'
 " Pug
 Plug 'digitaltoad/vim-pug'
 
+" Go
+Plug 'fatih/vim-go'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
