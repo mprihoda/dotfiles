@@ -6,7 +6,7 @@ fi
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
-export EDITOR="vi"
+export EDITOR="emacsclient"
 
 fpath=($ZSH/functions $fpath)
 

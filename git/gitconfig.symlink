@@ -17,10 +17,10 @@
         branch = auto
         ui = true
 [core]
-	excludesfile = /Users/mph/.gitignore
-        editor = vim
-	safecrlf = true
-	autocrlf = input
+        excludesfile = /Users/mph/.gitignore
+        editor = emacsclient
+	      safecrlf = true
+	      autocrlf = input
 [apply]
         whitespace = nowarn
 [mergetool]

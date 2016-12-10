@@ -337,7 +337,8 @@ you should place your code here."
      (plantuml . t)))
   (setq org-plantuml-jar-path
         (expand-file-name "/usr/local/Cellar/plantuml/8048/plantuml.8048.jar"))
-  (setq ensime-startup-dirname "~/.ensime.d"))
+  (setq ensime-startup-dirname "~/.ensime.d")
+  (setq global-git-commit-mode t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
