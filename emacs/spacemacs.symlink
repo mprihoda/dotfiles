@@ -334,6 +334,7 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+  (push '("\\.js\\'" . react-mode) auto-mode-alist)
   (setq tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(\e\\[[0-9;]*[a-zA-Z] *\\)*")
   ;; active Org-babel languages
   (org-babel-do-load-languages
