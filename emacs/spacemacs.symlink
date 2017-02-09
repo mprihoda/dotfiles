@@ -349,7 +349,8 @@ you should place your code here."
   (setq ensime-startup-dirname "~/.ensime.d")
   (setq yas-snippet-dirs '("~/.snippets.d"))
   (setq global-git-commit-mode t)
-  (diredp-toggle-find-file-reuse-dir 1))
+  (diredp-toggle-find-file-reuse-dir 1)
+  (mac-auto-operator-composition-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
