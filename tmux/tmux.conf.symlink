@@ -51,7 +51,10 @@ bind-key -r L resize-pane -R 5
 
 # Monitor activity
 set-window-option -g monitor-activity on 
-set-window -g visual-activity on
+set-window-option -g visual-activity on
+
+# Mode keys
+set-window-option -g mode-keys vi
 
 # Powerline
 run-shell "powerline-daemon -q"
