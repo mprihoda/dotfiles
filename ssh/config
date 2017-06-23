@@ -99,6 +99,7 @@ Host *
   FallBackToRsh no
   UseRsh no
   UseKeychain yes
+  AddKeysToAgent yes
   BatchMode no
   CheckHostIP yes
   StrictHostKeyChecking ask
