@@ -98,10 +98,11 @@ Host *
   PasswordAuthentication yes
   FallBackToRsh no
   UseRsh no
+  UseKeychain yes
   BatchMode no
   CheckHostIP yes
   StrictHostKeyChecking ask
-  IdentityFile ~/.ssh/id_dsa
+  IdentityFile ~/.ssh/id_rsa
   Port 22
   Protocol 2
   EscapeChar ~
