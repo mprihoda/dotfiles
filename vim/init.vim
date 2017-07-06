@@ -17,9 +17,6 @@ Plug 'chrisbra/csv.vim'
 " dockerfile syntax highlighting
 Plug 'honza/dockerfile.vim'
 
-" Gettext translation files
-Plug 'po.vim'
-
 Plug 'majutsushi/tagbar'
 " File tree
 Plug 'scrooloose/nerdtree'
@@ -38,7 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rizzatti/dash.vim'
 
 " Search about everything
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 Plug 'davidoc/taskpaper.vim'
@@ -109,9 +106,6 @@ Plug 'b4winckler/vim-objc'
 
 " Mustache
 Plug 'mustache/vim-mustache-handlebars'
-
-" Evernote plugin
-Plug 'neilagabriel/vim-geeknote'
 
 " Cucumber tests
 Plug 'tpope/vim-cucumber'
@@ -359,7 +353,7 @@ set imsearch=-1
 " Use markdown format for plain text files
 augroup markdown
     autocmd!
-    autocmd BufEnter,BufRead *.txt,*.md,*.text,*.markdown set filetype=markdown
+    autocmd BufEnter,BufRead *.md,*.markdown set filetype=markdown
     autocmd FileType markdown nmap <buffer> <Leader>p :!open -a Marked\ 2 "%"<CR>
 augroup END
 
@@ -436,6 +430,10 @@ augroup ensime
   autocmd FileType scala nnoremap <localleader>db :EnDocBrowse<CR>
   autocmd BufWritePost *.scala :silent EnTypeCheck<CR>
 augroup end
+
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
 
 try
   source ~/.config/nvim/init.local.vim

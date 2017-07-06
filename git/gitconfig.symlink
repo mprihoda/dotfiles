@@ -18,7 +18,6 @@
         ui = true
 [core]
         excludesfile = /Users/mph/.gitignore
-        editor = emacsclient
 	      safecrlf = true
 	      autocrlf = input
 [apply]
