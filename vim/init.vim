@@ -353,7 +353,6 @@ set imsearch=-1
 " Use markdown format for plain text files
 augroup markdown
     autocmd!
-    autocmd BufEnter,BufRead *.md,*.markdown set filetype=markdown
     autocmd FileType markdown nmap <buffer> <Leader>p :!open -a Marked\ 2 "%"<CR>
 augroup END
 
