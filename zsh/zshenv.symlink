@@ -1,3 +1,5 @@
+# Disable reading global zsh startup files, /etc/zshprofile messes up the PATH
+setopt -d
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
