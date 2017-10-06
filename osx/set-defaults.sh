@@ -13,7 +13,7 @@ defaults write com.jetbrains.intellij-EAP ApplePressAndHoldEnabled -bool false
 defaults write com.jetbrains.AppCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.Terminal ApplePressAndHoldEnabled -bool false
 defaults write org.vim.MacVim ApplePressAndHoldEnabled -bool false
-
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # Use AirDrop over every interface. srsly this should be a default.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
