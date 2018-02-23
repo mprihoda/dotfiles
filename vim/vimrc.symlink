@@ -56,7 +56,7 @@ Plugin 'joonty/vdebug'
 Plugin 'scrooloose/syntastic'
 
 " Completion
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Search
 Plugin 'mileszs/ack.vim'

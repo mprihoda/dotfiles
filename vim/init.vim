@@ -7,6 +7,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+let mapleader = " "
+let maplocalleader = ","
+
+set splitbelow
+set splitright
+
+nnoremap <Leader>fed :vsplit $MYVIMRC<cr>
+nnoremap <Leader>feR :source $MYVIMRC<cr>
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'MarcWeber/vim-addon-local-vimrc'
@@ -25,6 +34,7 @@ Plug 'kien/ctrlp.vim'
 " Git support
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 
 " Surround with / select between plugin
 Plug 'tpope/vim-surround'
@@ -320,6 +330,10 @@ map <silent> <Leader>o :CtrlP .<CR>
 map <silent> <Leader>y :CtrlPBuffer<CR>
 map <silent> <Leader>e :CtrlPMRU<CR>
 
+" Use denite for file, buffer and mru search
+"map <silent> <Leader>t :Denite file_rec<CR>
+"map <silent> <Leader>y :Denite buffer<CR>
+
 " Taskpaper settings
 function! s:taskpaper_setup()
 " Your settings
@@ -370,10 +384,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>""
 " Auto save when moving to another buffer, calling make etc.
 set autowrite
 
+augroup make
 " Set silent make on <leader>m
-nnoremap <Leader>m :silent make<CR>
-inoremap <Leader>m <Esc>:silent make<CR>
-vnoremap <Leader>m :<C-U>:silent make<CR>
+  autocmd!
+  nnoremap <Leader>m :silent make<CR>
+augroup END
 
 " Allow line numbers
 set number
@@ -402,15 +417,18 @@ let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = '[^. *\t]\.\w*'
 
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+augroup deoplete
+  autocmd!
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
 
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#mappings#close_popup() . "\<CR>"
-endfunction
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function() abort
+    return deoplete#mappings#close_popup() . "\<CR>"
+  endfunction
+augroup END
 
 " automatically strip trailing spaces
 augroup tspaces
@@ -432,6 +450,23 @@ augroup end
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
+
+  " terminal mappings
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <M-[> <Esc>
+  tnoremap <C-v><Esc> <Esc>
+  
+  " Alt+[hjkl] to navigate through windows in insert mode
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+
+  " Alt+[hjkl] to navigate through windows in normal mode
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
 endif
 
 try
