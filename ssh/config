@@ -1,3 +1,133 @@
+Host ws1
+  Hostname 10.129.2.3
+  User root
+
+Host tsed2
+  Hostname 10.2.64.58
+  User root
+
+Host plat1
+  Hostname plat1.fiftyforms.com
+  User core
+
+Host plat2
+  Hostname plat2.fiftyforms.com
+  User core
+
+Host plat3
+  Hostname plat3.fiftyforms.com
+  User core
+
+Host ebs-swarm01
+  Hostname 193.86.200.111
+  User debian
+
+Host army-old
+  Hostname 194.50.64.59
+  User root
+
+Host cmi-portal
+  Hostname 192.168.56.7
+  User root
+
+Host cmi-portal-test
+  Hostname 192.168.56.4
+  User root
+
+Host cmiweb1
+  Hostname tc161.cmi.cz
+  User root
+
+Host cmiweb2
+  Hostname tc162.cmi.cz
+  User root
+
+Host tc163
+  Hostname tc163.cmi.cz
+  User root
+
+Host mailtest
+  Hostname 192.168.56.9
+
+Host gw1eid
+  Hostname 10.129.0.101
+  User debian
+
+Host gw2eid
+  Hostname 10.129.0.102
+  User debian
+
+Host gw3eid
+  Hostname 10.129.0.103
+  User debian
+
+Host eid-swarm01
+  Hostname 10.129.2.101
+  User debian
+
+Host eid-swarm02
+  Hostname 10.129.2.102
+  User debian
+
+Host eid-swarm03
+  Hostname 10.129.2.103
+  User debian
+
+Host eid-swarm04
+  Hostname 10.129.2.104
+  User debian
+
+Host eid-swarm05
+  Hostname 10.129.2.105
+  User debian
+
+Host eid-swarm06
+  Hostname 10.129.2.106
+  User debian
+
+Host eid-swarm07
+  Hostname 10.129.2.107
+  User debian
+  
+Host eid-swarm08
+  Hostname 10.129.2.108
+  User debian
+
+Host eid-swarm09
+  Hostname 10.129.2.109
+  User debian
+
+Host eid-swarm11
+  Hostname 193.86.200.101
+  User debian
+
+Host eid-swarm21
+  Hostname 193.86.207.121
+  User debian
+
+Host eid-coreos1
+  Hostname 10.129.2.66
+  User core
+
+Host eid-coreos2
+  Hostname 10.129.2.67
+  User core
+
+Host eid-coreos3
+  Hostname 10.129.2.68
+  User core
+
+Host eid-coreos4
+  Hostname 10.129.2.69
+  User core
+
+Host army
+  Hostname 194.50.64.58
+  User eidentity
+  LocalForward 12376 localhost:2376
+  #LocalForward 2222 localhost:22
+  #LocalForward 8081 localhost:81
+
 Host galt
   Hostname galt.prihoda.net
 
@@ -36,7 +166,6 @@ Host labserver.browsersoft.com
   User  michal
 
 Host vsd.spinet.cz
-        Protocol 1
         StrictHostKeyChecking no
 
 Host ipaq
@@ -92,14 +221,14 @@ Host login.cz
 Host *
   ForwardAgent yes
   ForwardX11 no
-  RhostsAuthentication no
-  RhostsRSAAuthentication no
-  RSAAuthentication yes
+  UseKeychain yes
+  AddKeysToAgent yes
+  #RhostsAuthentication no
+  #RhostsRSAAuthentication no
+  #RSAAuthentication yes
   PasswordAuthentication yes
   FallBackToRsh no
   UseRsh no
-  UseKeychain yes
-  AddKeysToAgent yes
   BatchMode no
   CheckHostIP yes
   StrictHostKeyChecking ask

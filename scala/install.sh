@@ -9,12 +9,12 @@ fi
 
 # Install conscript
 
-if [ ! -e "$HOME/bin/cs" ]
+if [ ! -e "$CONSCRIPT_HOME/bin/cs" ]
 then
-    curl https://raw.githubusercontent.com/n8han/conscript/master/setup.sh | sh
+    wget https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh -O - | sh
 fi
 
-if [ ! -e "$HOME/bin/scalas" ]
+if [ ! -e "$CONSCRIPT_HOME/bin/scalas" ]
 then
-    $HOME/bin/cs sbt/sbt --branch 0.13.7
+    $HOME/bin/cs sbt/sbt --branch 1.1.1
 fi

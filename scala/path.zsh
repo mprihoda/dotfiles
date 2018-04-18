@@ -1,1 +1,2 @@
-PATH=$HOME/bin:$PATH
+export CONSCRIPT_HOME="$HOME/.conscript"
+PATH=$CONSCRIPT_HOME/bin:$HOME/bin:$PATH
