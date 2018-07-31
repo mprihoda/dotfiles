@@ -20,6 +20,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'MarcWeber/vim-addon-local-vimrc'
 
+" Hashicorp's HCL
+Plug 'b4b4r07/vim-hcl'
+
 " CSV
 Plug 'chrisbra/csv.vim'
 
