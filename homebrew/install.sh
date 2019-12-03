@@ -13,14 +13,6 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark ctags reattach-to-user-namespace
-# I used to install macvim, but since it is impossible to use vim server from command line with macvim
-# a change has been necessary.
-brew install cask
-brew install macvim --override-system-vim
-brew install neovim/neovim/neovim
-brew install powerline
-brew cask install iterm2-beta
-brew install python3
+brew install reattach-to-user-namespace neovim tmux python3
 
 exit 0

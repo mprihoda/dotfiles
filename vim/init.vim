@@ -1,8 +1,8 @@
 set nocompatible
 filetype off
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -18,7 +18,23 @@ nnoremap <Leader>feR :source $MYVIMRC<cr>
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'MarcWeber/vim-addon-local-vimrc'
+" Escape remapping
+
+Plug 'zhou13/vim-easyescape'
+
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 100
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+
+" Autocomplete
+Plug 'zxqfl/tabnine-vim'
+
+" WakaTime
+Plug 'wakatime/vim-wakatime'
+
+" Jinja2
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Hashicorp's HCL
 Plug 'b4b4r07/vim-hcl'
@@ -29,7 +45,7 @@ Plug 'chrisbra/csv.vim'
 " dockerfile syntax highlighting
 Plug 'honza/dockerfile.vim'
 
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 " File tree
 Plug 'scrooloose/nerdtree'
 " Fuzzy file/mru/buffer search
@@ -48,8 +64,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rizzatti/dash.vim'
 
 " Search about everything
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 Plug 'davidoc/taskpaper.vim'
 
@@ -61,32 +77,32 @@ Plug 'chriskempson/base16-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Bracket and other delimiters automatic closing
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 
 " Debugger
 Plug 'joonty/vdebug'
 
 " Syntax checker
-Plug 'scrooloose/syntastic'
-Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+"Plug 'scrooloose/syntastic'
+"Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 " Completion
 " Plug 'Valloric/YouCompleteMe', {'do' : './install.py --clang-completer'}
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+" function! DoRemote(arg)
+"   UpdateRemotePlugins
+" endfunction
+" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " Search
 Plug 'mileszs/ack.vim'
 
 "Distraction-free editation
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/limelight.vim'
 
 Plug 'aklt/plantuml-syntax'
 
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " HTML
 Plug 'othree/html5.vim'
@@ -97,9 +113,10 @@ Plug 'groenewege/vim-less'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " Plug 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
 Plug 'GEverding/vim-hocon'
-Plug 'ensime/ensime-vim'
+" Plug 'ensime/ensime-vim'
 
 " Play
 Plug 'gre/play2vim'
@@ -108,11 +125,11 @@ Plug 'gre/play2vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-Plug 'carlitux/deoplete-ternjs'
+"Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+"Plug 'carlitux/deoplete-ternjs'
 
 " PHP
-Plug 'vim-php/tagbar-phpctags.vim'
+"Plug 'vim-php/tagbar-phpctags.vim'
 
 " Objective-C
 Plug 'b4winckler/vim-objc'
@@ -249,7 +266,10 @@ set mat=2
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+"set termguicolors
+"set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
+"set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
+"set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -297,6 +317,94 @@ try
 catch
 endtry
 
+"""
+" For CoC Scala
+"""
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Some server have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for do codeAction of current line
+nmap <leader>ac <Plug>(coc-codeaction)
+
+" Remap for do action format
+nnoremap <silent> F :call CocAction('format')<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Show all diagnostics
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+"""
+" End Coc Scala
+"""
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -324,15 +432,15 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_scala_checkers = ['ensime']
-let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+" let g:syntastic_scala_checkers = ['ensime']
+" let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
 
 " Do not limit ctrlp max files
 let g:ctrlp_max_files=40000
 
 " Map ctrlp for file, buffer and mru search
 map <silent> <Leader>t <C-p>
-map <silent> <Leader>o :CtrlP .<CR>
+"map <silent> <Leader>o :CtrlP .<CR>
 map <silent> <Leader>y :CtrlPBuffer<CR>
 map <silent> <Leader>e :CtrlPMRU<CR>
 
@@ -404,8 +512,8 @@ set number
 let g:syntastic_javascript_checkers = ['eslint']
 
 " SBT quickfix
-let g:quickfix_load_mapping="<Leader>0"
-let g:quickfix_next_mapping=""
+" let g:quickfix_load_mapping="<Leader>0"
+" let g:quickfix_next_mapping=""
 
 " Copy to clipboard also (unnamed works for macvim, unnamedplus works with X-11 vim on MacOS)
 set clipboard^=unnamed
@@ -423,17 +531,21 @@ let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = '[^. *\t]\.\w*'
 
-augroup deoplete
-  autocmd!
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+"augroup deoplete
+"  autocmd!
+"  " <C-h>, <BS>: close popup and delete backword char.
+"  inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+"  inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+"
+"  " <CR>: close popup and save indent.
+"  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"  function! s:my_cr_function() abort
+"    return deoplete#mappings#close_popup() . "\<CR>"
+"  endfunction
+"augroup END
 
-  " <CR>: close popup and save indent.
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function() abort
-    return deoplete#mappings#close_popup() . "\<CR>"
-  endfunction
+augroup sbt
+  au BufRead,BufNewFile *.sbt set filetype=scala
 augroup END
 
 " automatically strip trailing spaces
@@ -443,16 +555,16 @@ augroup tspaces
 augroup END
 
 " ensime mappings
-augroup ensime
-  autocmd!
-  autocmd FileType scala nnoremap <localleader>i :EnSuggestImport<CR>
-  autocmd FileType scala nnoremap <localleader>c :EnTypeCheck<CR>
-  autocmd FileType scala nnoremap <localleader>dt :EnType<CR>
-  autocmd FileType scala nnoremap <localleader>di :EnInspectType<CR>
-  autocmd FileType scala nnoremap <localleader>df :EnDeclaration<CR>
-  autocmd FileType scala nnoremap <localleader>db :EnDocBrowse<CR>
-  autocmd BufWritePost *.scala :silent EnTypeCheck<CR>
-augroup end
+"augroup ensime
+"  autocmd!
+"  autocmd FileType scala nnoremap <localleader>i :EnSuggestImport<CR>
+"  autocmd FileType scala nnoremap <localleader>c :EnTypeCheck<CR>
+"  autocmd FileType scala nnoremap <localleader>dt :EnType<CR>
+"  autocmd FileType scala nnoremap <localleader>di :EnInspectType<CR>
+"  autocmd FileType scala nnoremap <localleader>df :EnDeclaration<CR>
+"  autocmd FileType scala nnoremap <localleader>db :EnDocBrowse<CR>
+"  autocmd BufWritePost *.scala :silent EnTypeCheck<CR>
+"augroup end
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
