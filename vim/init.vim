@@ -28,7 +28,7 @@ cnoremap jk <ESC>
 cnoremap kj <ESC>
 
 " Autocomplete
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
 
 " WakaTime
 Plug 'wakatime/vim-wakatime'
