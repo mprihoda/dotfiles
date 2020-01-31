@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -17,7 +18,13 @@ done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
-compinit
+
+# check the completion cache only once a day
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+#
 autoload -U +X bashcompinit && bashcompinit
 
 # load every completion after autocomplete loads
@@ -29,3 +36,4 @@ done
 unset config_files
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#zprof

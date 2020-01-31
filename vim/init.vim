@@ -1,6 +1,8 @@
 set nocompatible
 filetype off
 
+set shell=/bin/zsh\ -f
+
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -22,10 +24,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'zhou13/vim-easyescape'
 
+" Map jk and kj to Esc in command-line mode
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 100
 cnoremap jk <ESC>
 cnoremap kj <ESC>
+
+tnoremap jk <ESC>
+tnoremap kj <ESC>
 
 " Autocomplete
 " Plug 'zxqfl/tabnine-vim'
@@ -66,6 +72,9 @@ Plug 'rizzatti/dash.vim'
 " Search about everything
 "Plug 'Shougo/denite.nvim'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" Asciidoctor
+Plug 'habamax/vim-asciidoctor'
 
 Plug 'davidoc/taskpaper.vim'
 
@@ -113,7 +122,7 @@ Plug 'groenewege/vim-less'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'file:///Users/mph/Devel/forked/sbt-quickfix', {'rtp': 'src/main/resources/vim-sbt/'}
 Plug 'GEverding/vim-hocon'
 " Plug 'ensime/ensime-vim'
@@ -154,6 +163,9 @@ Plug 'fatih/vim-go'
 
 " Terraform
 Plug 'hashivim/vim-terraform'
+
+" REST console
+Plug 'diepm/vim-rest-console'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -269,7 +281,7 @@ syntax enable
 "set termguicolors
 "set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
 "set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
-"set background=dark
+set background=light
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -343,7 +355,7 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+ 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -354,7 +366,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -401,6 +415,18 @@ nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+
+"function! CocExtensionStatus() abort
+"  return get(g:, 'coc_status', '')
+"endfunction
+"let g:airline_section_c = '%f%{CocExtensionStatus()}'
+
+nnoremap <leader>ws :call CocAction('runCommand', 'metals.expand-decoration')<CR>
+
+" Notify coc.nvim that <enter> has been pressed.
+" Currently used for the formatOnType feature.
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 """
 " End Coc Scala
 """
@@ -573,6 +599,11 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <M-[> <Esc>
   tnoremap <C-v><Esc> <Esc>
+
+  " Map jk and kj to Esc in terminal mode
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap jk <C-\><C-n>
+  tnoremap kj <C-\><C-n>
   
   " Alt+[hjkl] to navigate through windows in insert mode
   tnoremap <A-h> <C-\><C-n><C-w>h
