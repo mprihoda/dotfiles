@@ -89,9 +89,11 @@ directory_name() {
 }
 
 if [[ -n $SSH_CONNECTION ]]; then
-export PROMPT=$'\n%m|$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+#export PROMPT=$'\n%m|$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n%m|$(directory_name) $(git_dirty)$(need_push)\n› '
 else
-export PROMPT=$'\n$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+#export PROMPT=$'\n$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(directory_name) $(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
