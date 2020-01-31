@@ -37,7 +37,3 @@ unset config_files
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 #zprof
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/mph/.sdkman"
-[[ -s "/home/mph/.sdkman/bin/sdkman-init.sh" ]] && source "/home/mph/.sdkman/bin/sdkman-init.sh"
