@@ -7,4 +7,4 @@ then
   mkdir -p ${POWERLINE_CONFIG}
 fi
 
-cp -r themes ${POWERLINE_CONFIG}
+cp -r powerline/themes ${POWERLINE_CONFIG}

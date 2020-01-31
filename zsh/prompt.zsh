@@ -88,7 +88,12 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
+if [[ -n $SSH_CONNECTION ]]; then
+export PROMPT=$'\n%m|$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+else
 export PROMPT=$'\n$(java_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+fi
+
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }

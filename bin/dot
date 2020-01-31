@@ -10,10 +10,13 @@ export ZSH=$HOME/.dotfiles
 # $ZSH/osx/set-defaults.sh
 
 # Upgrade homebrew
-brew update
+if [ $(uname) = "Darwin" ]
+then
+	brew update
 
-# Install homebrew packages
-$ZSH/homebrew/install.sh 2>&1
+	# Install homebrew packages
+	$ZSH/homebrew/install.sh 2>&1
+fi
 
 # Update vim plugins
 nvim +PluginUpdate +qall
