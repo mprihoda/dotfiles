@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 # Disable reading global zsh startup files, /etc/zshprofile messes up the PATH
 setopt -d
 # shortcut to this dotfiles path is $ZSH
@@ -8,7 +9,7 @@ export LANG="cs_CZ.UTF-8"
 export LC_ALL="cs_CZ.UTF-8"
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Devel/commercial/
+export PROJECTS=$HOME/Devel/commercial/
 
 export VAGRANT_VMWARE_CLONE_DIRECTORY=$HOME/vagrant
 
@@ -25,3 +26,4 @@ do
 done
 
 unset config_files
+#zprof

@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-set shell=/bin/zsh\ -f
+" set shell=/usr/bin/zsh\ -f
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -449,14 +449,14 @@ noremap <silent> <Leader>7 :TagbarToggle<CR>
 colorscheme solarized
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_scala_checkers = ['ensime']
 " let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
@@ -535,7 +535,7 @@ set number
 
 " Enable jsx checking using jsxhint
 " Use 'npm install -g jsxhint' to install
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_checkers = ['eslint']
 
 " SBT quickfix
 " let g:quickfix_load_mapping="<Leader>0"
