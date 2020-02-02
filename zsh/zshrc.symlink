@@ -35,5 +35,7 @@ done
 
 unset config_files
 
+[[ -n "${SSH_CONNECTION}" ]] && alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 #zprof
