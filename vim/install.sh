@@ -1,33 +1,21 @@
 #!/bin/sh
 
-if [ ! -e ~/.vim ]
+if [ $(uname) = "Linux" ]
 then
-    mkdir ~/.vim
+	if [ ! -d "${HOME}/bin" ]
+	then
+		mkdir -p "${HOME}/bin"
+	fi
+
+	sudo apt install -y fuse build-essential
+
+	if [ ! -d "${HOME}/bin/nvim" ]
+	then
+		curl https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage -L -o "${HOME}/bin/nvim"
+	fi
 fi
 
-if [ ! -e ~/.config ]
+if [ ! -d "~/.SpaceVim" ]
 then
-    mkdir ~/.config
+	curl -sLf https://spacevim.org/install.sh | bash
 fi
-
-if [ ! -e ~/.config/nvim ]
-then
-    mkdir ~/.config/nvim
-fi
-
-if [ ! -e ~/.config/nvim/init.vim ]
-then
-    ln -s $(pwd)/vim/init.vim ~/.config/nvim
-fi
-
-if [ ! -e ~/.vim/bundle ]
-then
-	mkdir -p ~/.vim/bundle
-fi
-
-if [ ! -e ~/.vim/bundle/Vundle.vim ]
-then
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
-#nvim +PlugUpdate +qall
