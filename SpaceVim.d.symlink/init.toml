@@ -25,9 +25,18 @@
     enable_statusline_mode = false
     # CoC
     autocomplete_method = "coc"
-    bootstrap_before = "metals#before"
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
     wildignore = "target,out,build,.*"
     filemanager = "nerdtree"
+
+[[layers]]
+  name = "core#statusline"
+  enable = false
+
+[[layers]]
+  name = "core#tabline"
+  enable = false
 
 # Enable autocomplete layer
 [[layers]]
@@ -57,9 +66,6 @@ name = "colorscheme"
 
 [[layers]]
   name = "lsp"
-
-[[layers]]
-  name = "lang#scala"
 
 [[layers]]
   name = "lang#dockerfile"
@@ -99,3 +105,7 @@ name = "colorscheme"
 
 [[layers]]
   name = "lang#go"
+
+[[layers]]
+  name = "lang#scalametals"
+
