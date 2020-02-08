@@ -59,6 +59,9 @@ name = "tools#dash"
 name = "VersionControl"
 
 [[layers]]
+name = "git"
+
+[[layers]]
 name = "ctrlp"
 
 [[layers]]
