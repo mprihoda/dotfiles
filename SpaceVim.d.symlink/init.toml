@@ -30,6 +30,21 @@
     wildignore = "target,out,build,.*"
     filemanager = "nerdtree"
 
+[[custom_plugins]]
+  name = 'neoclide/coc-tabnine'
+  build = 'yarn install --frozen-lockfile'
+  merged = false
+
+[[custom_plugins]]
+  name = 'neoclide/coc-json'
+  build = 'yarn install --frozen-lockfile'
+  merged = false
+
+[[custom_plugins]]
+  name = 'neoclide/coc-html'
+  build = 'yarn install --frozen-lockfile'
+  merged = false
+
 [[layers]]
   name = "core#statusline"
   enable = false
