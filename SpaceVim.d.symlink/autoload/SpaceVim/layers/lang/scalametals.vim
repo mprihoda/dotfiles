@@ -98,6 +98,8 @@ function! SpaceVim#layers#lang#scalametals#config() abort
 
   " Do not use neoformat for formatting
   let g:neoformat_enabled_scala = []
+  " Do not use neomake for scala
+  let g:neomake_scala_enabled_makers = []
 endfunction
 
 
@@ -129,7 +131,7 @@ function! s:language_specified_mappings() abort
         \ 'call SpaceVim#lsp#go_to_typedef()', 'type definition', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'u'],
         \ 'call SpaceVim#lsp#references()', 'find references', 1)
-  " inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-space> coc#refresh()
   " endif
 
   " import `vim-scala`
