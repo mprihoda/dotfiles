@@ -75,7 +75,8 @@ scriptencoding utf-8
 function! SpaceVim#layers#lang#scalametals#plugins() abort
   let plugins = [
         \ ['derekwyatt/vim-scala', {'on_ft': 'scala'}],
-        \ ['scalameta/coc-metals', {'merged': 0, 'build': 'yarn install --frozen-lockfile'}]
+        \ ['scalameta/coc-metals', {'merged': 0, 'build': 'yarn install --frozen-lockfile'}],
+        \ ['GEverding/vim-hocon', {'merged': 0, 'on_ft': 'hocon'}]
         \ ]
   return plugins
 endfunction
@@ -108,18 +109,35 @@ function! s:language_specified_mappings() abort
   " know
   " if SpaceVim#layers#lsp#check_filetype('scala')
   nnoremap <silent><buffer> K :call SpaceVim#lsp#show_doc()<CR>
-  nmap <silent><buffer> [n <Plug>(coc-diagnostic-prev)
-  nmap <silent><buffer> ]n <Plug>(coc-diagnostic-next)
-  nmap <silent><buffer> <leader>a <Plug>(coc-codeaction)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'n'],
+        \ '<Plug>(coc-diagnostic-next)', 'next error', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'N'],
+        \ '<Plug>(coc-diagnostic-prev)', 'prev error', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'p'],
+        \ '<Plug>(coc-diagnostic-prev)', 'prev error', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'a'],
+        \ '<Plug>(coc-codeaction-selected)', 'code action selection', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'c'],
+        \ '<Plug>(coc-codeaction)', 'code action', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'f'],
+        \ '<Plug>(coc-format-selected)', 'format selection', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'q'],
+        \ '<Plug>(coc-fix-current)', 'quick fix', 0)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'f'],
         \ 'call CocAction(''format'')', 'format file', 1)
-  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'a'],
-        \ ':CocList diagnostics', 'show all diagnostics', 1)
-  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'o'],
-        \ ':CocList outline', 'show outline', 1)
-  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 's'],
-        \ ':CocList -I symbols', 'show symbols', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'j'],
+        \ 'CocNext', 'next item action', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'k'],
+        \ 'CocPrev', 'prev item action', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'l'],
+        \ 'CocListResume', 'resume last list', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'd'],
+        \ 'CocList diagnostics', 'show all diagnostics', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'o'],
+        \ 'CocList outline', 'show outline', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 's'],
+        \ 'CocList -I symbols', 'show symbols', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'K'],
         \ 'call SpaceVim#lsp#show_doc()', 'show doc', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'e'],
         \ 'call SpaceVim#lsp#rename()()', 'rename symbol', 1)
@@ -131,7 +149,21 @@ function! s:language_specified_mappings() abort
         \ 'call SpaceVim#lsp#go_to_typedef()', 'type definition', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'u'],
         \ 'call SpaceVim#lsp#references()', 'find references', 1)
+  let g:_spacevim_mappings_space.l.w = {'name' : '+Worksheet'}
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'w', 's'],
+        \ '<Plug>(coc-metals-expand-decoration)', 'ws expand decorations', 0)
+  let g:_spacevim_mappings_space.l.t = {'name' : '+Tree'}
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 't', 't'],
+        \ 'CocCommand metals.tvp', 'toggle tree view', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 't', 'b'],
+        \ 'CocCommand metals.tvp metalsBuild', 'toggle build tree', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 't', 'c'],
+        \ 'CocCommand metals.tvp metalsCompile', 'toggle compile tree', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 't', 'f'],
+        \ 'CocCommand metals.revealInTreeView metalsBuild', 'reveal in build tree', 1)
   inoremap <silent><expr> <c-space> coc#refresh()
+  " Use `:Fold` to fold current buffer
+  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
   " endif
 
   " import `vim-scala`

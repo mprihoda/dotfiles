@@ -28,7 +28,7 @@
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
     wildignore = "target,out,build,.*"
-    filemanager = "nerdtree"
+    # filemanager = "nerdtree"
 
 [[custom_plugins]]
   name = 'neoclide/coc-tabnine'
@@ -43,6 +43,15 @@
 [[custom_plugins]]
   name = 'neoclide/coc-html'
   build = 'yarn install --frozen-lockfile'
+  merged = false
+
+[[custom_plugins]]
+  name = 'fannheyward/coc-xml'
+  build = 'yarn install --frozen-lockfile'
+  merged = false
+
+[[custom_plugins]]
+  name = 'vimwiki/vimwiki'
   merged = false
 
 [[layers]]
@@ -60,27 +69,28 @@ auto-completion-return-key-behavior = "complete"
 auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
 
 [[layers]]
-name = "tmux"
+  name = "tmux"
 
 [[layers]]
-name = "tools#dash"
+  name = "tools#dash"
 
 [[layers]]
-name = "VersionControl"
+  name = "VersionControl"
 
 [[layers]]
-name = "git"
+  name = "git"
+  git-plugin = "gina"
 
 [[layers]]
-name = "ctrlp"
+  name = "ctrlp"
 
 [[layers]]
-name = "colorscheme"
+  name = "colorscheme"
 
 [[layers]]
   name = "lsp"
@@ -114,6 +124,8 @@ name = "colorscheme"
 
 [[layers]]
   name = "test"
+  [layers.override_config]
+    scala_runner = "blooptest"
 
 [[layers]]
   name = "lang#python"

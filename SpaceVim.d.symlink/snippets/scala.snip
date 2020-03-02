@@ -1,0 +1,14 @@
+snippet showcase
+options head
+  import fiftyforms.scalajs.showcase.Showcase
+  import japgolly.scalajs.react.vdom.VdomElement
+  import japgolly.scalajs.react.vdom.html_<^._
+
+  object ${1:`expand('%:t:r')`} extends Showcase.Section.Factory {
+
+    def default(ctx: Showcase.Context): VdomElement = ${0}
+
+    override def build(
+      builder: Showcase.Section.Name => Showcase.Section
+    ): Showcase.Section = builder("${2:`substitute(expand('%:t:r'), "Showcase", "", "")`}").add("default")(default)
+  }

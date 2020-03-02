@@ -3,6 +3,16 @@ function! myspacevim#before() abort
 endfunction
 
 function! myspacevim#after() abort
+  """ Czech settings
+  set keymap=czech_utf-8
+  " Reset to default right away
+  set iminsert=0
+  " Reset to no mapping after escape in insert mode
+  inoremap <ESC> <ESC>:set iminsert=0<CR>
+  " Use language map in search
+  set imsearch=-1
+  """ End Czech settings
+
   """
   " For CoC Scala
   """
@@ -66,4 +76,7 @@ function! myspacevim#after() abort
   """
   " End Coc Scala
   """
+
+  """ Vim WIKI markdown syntax
+  let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 endfunction
