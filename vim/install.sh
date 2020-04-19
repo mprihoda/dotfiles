@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ `type pip3 >/dev/null 2>&1` ]
+then
+  pip3 install neovim-remote
+fi
+
 if [ $(uname) = "Linux" ]
 then
 	if [ ! -d "${HOME}/bin" ]

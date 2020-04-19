@@ -27,8 +27,17 @@
     autocomplete_method = "coc"
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
-    wildignore = "target,out,build,.*"
-    # filemanager = "nerdtree"
+    # wildignore = "target,out,build,.*"
+    wildignore = "*/tmp/*,*.so,*.swp,*.zip,*.class,tags,*.jpg,*.ttf,*.TTF,*.png,*/target/*,.git,.svn,.hg,.DS_Store,*.svg,.bloop,.idea,*/out/*,.metals,*/node_modules/*"
+    filemanager = "defx"
+
+[[custom_plugins]]
+  name = 'wakatime/vim-wakatime'
+  merged = false
+
+#[[custom_plugins]]
+#  name = 'gerw/vim-HiLinkTrace'
+#  merged = false
 
 [[custom_plugins]]
   name = 'neoclide/coc-tabnine'
@@ -54,6 +63,22 @@
   name = 'vimwiki/vimwiki'
   merged = false
 
+[[custom_plugins]]
+  name = 'junegunn/goyo.vim'
+  merged = false
+
+[[custom_plugins]]
+  name = 'junegunn/limelight.vim'
+  merged = false
+
+[[custom_plugins]]
+  name = 'habamax/vim-asciidoctor'
+  merged = false
+
+[[custom_plugins]]
+  name = 'diepm/vim-rest-console'
+  merged = false
+
 [[layers]]
   name = "core#statusline"
   enable = false
@@ -61,6 +86,10 @@
 [[layers]]
   name = "core#tabline"
   enable = false
+
+[[layers]]
+  name = "ui"
+  enable_sidebar = true
 
 # Enable autocomplete layer
 [[layers]]
@@ -87,7 +116,7 @@ auto-completion-tab-key-behavior = "smart"
   git-plugin = "gina"
 
 [[layers]]
-  name = "ctrlp"
+  name = "denite"
 
 [[layers]]
   name = "colorscheme"
@@ -139,3 +168,5 @@ auto-completion-tab-key-behavior = "smart"
 [[layers]]
   name = "lang#scalametals"
 
+[[layers]]
+  name = "lang#toml"

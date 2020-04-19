@@ -91,7 +91,7 @@ function! SpaceVim#layers#lang#scalametals#config() abort
         \ function('SpaceVim#lsp#go_to_def'))
   call SpaceVim#plugins#repl#reg('scala', 'scala')
   call SpaceVim#plugins#runner#reg_runner('scala', 'bloop run')
-  call add(g:spacevim_project_rooter_patterns, 'build.sbt')
+  call insert(g:spacevim_project_rooter_patterns, 'build.toml')
   augroup SpaceVim_lang_scala
     au!
     autocmd BufRead,BufNewFile *.sbt set filetype=scala
@@ -143,6 +143,8 @@ function! s:language_specified_mappings() abort
         \ 'call SpaceVim#lsp#rename()()', 'rename symbol', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'g'],
         \ 'call SpaceVim#lsp#go_to_def()', 'goto definition', 1)
+  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'G'],
+        \ 'call CocAction(''jumpDefinition'', ''vsplit'')', 'goto definition (split)', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'm'],
         \ 'call SpaceVim#lsp#go_to_impl()', 'goto impl', 1)
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'y'],
@@ -150,7 +152,7 @@ function! s:language_specified_mappings() abort
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'u'],
         \ 'call SpaceVim#lsp#references()', 'find references', 1)
   let g:_spacevim_mappings_space.l.w = {'name' : '+Worksheet'}
-  call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 'w', 's'],
+  call SpaceVim#mapping#space#langSPC('nmap', ['l', 'w', 's'],
         \ '<Plug>(coc-metals-expand-decoration)', 'ws expand decorations', 0)
   let g:_spacevim_mappings_space.l.t = {'name' : '+Tree'}
   call SpaceVim#mapping#space#langSPC('nnoremap', ['l', 't', 't'],
